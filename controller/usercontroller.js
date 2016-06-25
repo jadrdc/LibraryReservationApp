@@ -4,18 +4,18 @@ var UserSchema=require('../models/user');
 var UserControler = function ()
 {
 
- this.saveUser=function(name,lastname,password,email,identification,faculty,university_ident,adminuser)
+ this.saveUser=function(name,lastname,password,email,identification,faculty,university_ident,adminuser,next)
  {
-   var user= new User();
-     user.name=name;
+   var user= new UserSchema();
+    user.name=name;
      user.lastname=lastname;
-     user.email=emmail;
+     user.email=email;
      user.identification=identification;
      user.password=password;
      user.faculty=faculty;
      user.university_ident=university_ident;
      user.adminuser=adminuser;
-     user.save();
+     user.save(next);
   };
   this.findUserByIdentification=function(identification,next)
    {

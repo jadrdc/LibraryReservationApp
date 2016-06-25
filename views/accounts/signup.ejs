@@ -1,11 +1,19 @@
+<% layout('./public/layout') %>
 <div class="row">
 
 <div class="col-lg-6 col-md-offset-3">
+<%  if(error.length >0) {%>
+<div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  <%= error %>
+</div>
+<% } %>
 
 
 
 <form method="post">
-
 <div class="form-group" >
    <label> Nombre</label>
    <input type="text"  name="name" class="form-control"  required="true" />
@@ -26,9 +34,13 @@
    <input type="text"  name="faculty" class="form-control"  required="true" />
 </div>
 
+<div class="form-group" >
+   <label> Matricula/Codigo de Maestro</label>
+   <input type="text"  name="university_ident" class="form-control"  required="true" />
+</div>
 
 <div class="form-group" >
-<label> Email</label>
+<label> Email Institucional</label>
 <input type="email"  name="email" class="form-control" required="true" />
 </div>
 
@@ -40,8 +52,8 @@
 
 <div class="form-group" >
   <label>Administrador</label>
-  <input type="radio" name="adminuser" value="1"> Si<br>
-   <input type="radio" name="adminuser" value="0" checked> No<br>
+  <input type="radio" name="adminuser"  class="form-control"   value="1"> Si<br>
+   <input type="radio" name="adminuser" class="form-control"    value="0" checked> No<br>
 </div>
 
 <button type="submit" class="btn btn-success">Registrar</button>

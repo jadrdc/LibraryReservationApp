@@ -1,8 +1,12 @@
 /*Import of Libraries*/
 var express=require('express');
-var requesthandler= require('body-parser');
+var bodyParser= require('body-parser');
 var ejs=require('ejs');
 var ejsmate=require('ejs-mate');
+var session=require('express-session');
+var cookieParser=require('cookie-parser');
+var flash=require('express-flash');
+
 // User routing
 var userrouting=require('./routes/user');
 
@@ -11,15 +15,23 @@ var parameter=require('./global/parameters')
 
 /*App Object*/
 var app=express();
-var h = require('./models/historical');
-//Add Routes to App
-app.use(userrouting);
+//Add MiddleWare
 app.engine('ejs',ejsmate);
 app.set('view engine','ejs');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(cookieParser());
+app.use(session(
+  {
+  resave:true,
+  saveUnitialized:true,
+  secret:parameter.secretkey
+}));
+
+app.use(flash());
 
 
-
-
+app.use(userrouting);
 
 
 

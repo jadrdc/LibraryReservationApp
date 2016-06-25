@@ -1,4 +1,4 @@
-  var mongose=require("mongoose");
+var mongose=require("mongoose");
   var bcrypt= require("bcrypt-nodejs");
   var Schema=mongose.Schema;
 
