@@ -11,7 +11,7 @@ var parameter=require('./global/parameters')
 
 /*App Object*/
 var app=express();
-
+var h = require('./models/historical');
 //Add Routes to App
 app.use(userrouting);
 app.engine('ejs',ejsmate);
@@ -24,12 +24,11 @@ app.set('view engine','ejs');
 
 
 
-
-// Global Connection to Database
+// Global Connection to Databaseññ
 parameter.mongoose.connect(parameter.database,function(err)
 {
   if(err) {
-  console.log('Unable to Connect due to '+parameter.database)
+  console.log('Unable to Connect due to '+err)
   }
   else {
 
