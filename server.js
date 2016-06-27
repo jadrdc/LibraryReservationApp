@@ -9,9 +9,14 @@ var flash=require('express-flash');
 
 // User routing
 var userrouting=require('./routes/user');
+var bookrouting=require('./routes/book');
 
 /*Global Configuration Values*/
 var parameter=require('./global/parameters')
+var MongoStore=require('connect-mongo')(session);
+var passport=require('passport');
+
+
 
 /*App Object*/
 var app=express();
@@ -25,13 +30,16 @@ app.use(session(
   {
   resave:true,
   saveUnitialized:true,
-  secret:parameter.secretkey
+  secret:parameter.secretkey,
+  store:new MongoStore({url:parameter.database,autoReconnect:true})
 }));
 
 app.use(flash());
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(userrouting);
+app.use(bookrouting);
 
 
 

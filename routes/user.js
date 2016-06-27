@@ -1,5 +1,8 @@
   var router = require('express').Router();
   var  UserController=require('../controller/usercontroller');
+  var authentication=require('../utilities/authentication');
+  var passport= require('passport');
+
 
   router.get('/signup',function (req,res,next)
   {
@@ -17,7 +20,6 @@
                          req.body.faculty,req.body.university_ident,req.body.adminuser,
                         function(err)
                       {
-                        console.log(err);
                         if (err)
                           {
                             req.flash('error','Usuario, Identicacion o  Correo ya estan registrados');
@@ -28,6 +30,18 @@
                         {
                                res.redirect('/profile');
                         }});});
+
+  router.get('/login',function(req,res,next)
+{
+   res.render('./accounts/login',{error :req.flash('error')});
+
+});
+
+router.post("/login",passport.authenticate('local-login',{
+  successRedirect: "/profile",
+  failureRedirect : "/login",
+  failureFlash: 'Usuario o Contraseña Invalido'
+}));
 
 
 

@@ -1,0 +1,56 @@
+<% layout('./public/layout') %>
+<div class="row">
+
+<div class="col-lg-6 col-md-offset-3">
+  <%  if(error.length >0) {%>
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    <%= error %>
+  </div>
+  <% } %>
+<form method="post">
+<div class="form-group" >
+   <label> ISBN</label>
+   <input type="text"  name="isbn" class="form-control"  required="true" />
+</div>
+
+<div class="form-group" >
+   <label> Titulo</label>
+   <input type="text"  name="title" class="form-control"  required="true" />
+</div>
+
+<div class="form-group" >
+   <label> Autores</label>
+   <input type="text"  name="authors" class="form-control"  required="true" />
+</div>
+
+<div class="form-group" >
+   <label> Fecha Publicacion</label>
+   <input type="date"  name="published_date" class="form-control"  required="true" />
+</div>
+
+
+<div class="form-group" >
+   <label> Categoria</label>
+   <input type="text"  name="category" class="form-control"  required="true" />
+</div>
+
+<div class="form-group" >
+   <label> Cantidad Disponible</label>
+   <input type="number"  name="stock_amount" class="form-control"  required="true" />
+</div>
+
+
+<div class="form-group" >
+   <label> Cantidad De Dia de Prestamo</label>
+   <input type="number"  name="loan_time" class="form-control"  required="true" />
+</div>
+
+
+<button type="submit" class="btn btn-success">Registrar</button>
+</form>
+
+</div>
+</div>

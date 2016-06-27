@@ -4,7 +4,7 @@ var Schema=mongose.Schema;
 
 
 var BookSchema = new Schema({
-   ISBN : String,
+   ISBN :{ type : String, unique : true},
    title : String,
    authors : String,
    published_date :Date,

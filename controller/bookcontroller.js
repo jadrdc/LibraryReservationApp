@@ -4,9 +4,9 @@ var BookSchema=require('../models/book');
 var BookController = function ()
 {
 
- this.saveUser=function(ISBN ,title ,authors ,published_date ,loan_time ,stock_amount ,category)
+ this.saveBook=function(ISBN ,title ,authors ,published_date ,loan_time ,stock_amount ,category,done)
  {
-   var book= new Book();
+   var book= new BookSchema();
      book.ISBN=ISBN;
      book.title=title;
      book.authors=authors;
@@ -14,7 +14,7 @@ var BookController = function ()
      book.loan_time=loan_time;
      book.stock_amount=stock_amount;
      book.category=category;
-     book.save();
+     book.save(done);
   };
   this.findBookByISBN=function(identification,next)
    {
@@ -22,7 +22,7 @@ var BookController = function ()
        {
         next(err,book);
        });
-   }
+   };
 
    this.findBookById=function(_id,next)
     {
@@ -30,14 +30,15 @@ var BookController = function ()
         {
          next(err,book);
         });
-    }
+    };
 
-  this.removeUser=function()
+  this.removeBook=function()
        {
-             BookSchema.findOneAndRemove(({ISBN:ISBN},function(err,book)
+             BookSchema.findOneAndRemove({ISBN:ISBN},function(err,book)
             {
              next(err,book);
             });
-        }
+        };
 };
+
 module.exports=BookController;
