@@ -1,23 +1,24 @@
 var router = require('express').Router();
 var BookController=require('../controller/bookcontroller');
-var x=0;
 
 router.get('/addBook',function(req,res,next)
 {
 
-/*    if(req.isAuthenticated()){
-} else
+ if(req.isAuthenticated()   &&   req.user.adminuser==true ){
+   res.render('./books/addBook',{'error' : req.flash('error')});
+
+}
+ else
 {
 
     res.redirect('/login');
-}*/  res.render('./books/addBook',{'error' : req.flash('error')});
-
+}
 });
 
 
 router.post('/addBook',function(req,res,next)
 {
-/*  if(req.isAuthenticated()){*/
+  if(req.isAuthenticated()  &&   req.user.adminuser==true   ){
   var bookManager= new BookController();
      bookManager.saveBook(req.body.isbn ,req.body.title ,req.body.authors ,req.body.published_date ,req.body.loan_time ,req.body.stock_amount ,req.body.category,
        function(err,book){
@@ -26,21 +27,27 @@ router.post('/addBook',function(req,res,next)
                 res.redirect('/addBook');
      });
 
-/* }  else {
-     res.redirect('./accounts/login');
-   }*/
+ }  else {
+     res.redirect('/login');
+   }
 });
 
 
 
 router.get('/detailbooks',function(req,resp)
 {
-
+  if(req.isAuthenticated()  &&   req.user.adminuser==true   ){
   var bookManager= new BookController();
       bookManager.findAllBooks(function(err,books)
       {
               resp.render('./books/detailbook',{books :books});
       });
+    }
+    else
+    {
+        resp.redirect('/login');
+
+    }
 
 
 });

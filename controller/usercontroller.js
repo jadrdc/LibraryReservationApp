@@ -25,6 +25,18 @@ var UserControler = function ()
        });
    }
 
+
+   this.findUserByUniversityId=function(identification,next)
+    {
+         UserSchema.findOne({university_ident:identification},function(err,user)
+        {
+         next(err,user);
+        });
+    }
+
+
+
+
    this.findUserById=function(_id,next)
     {
          UserSchema.findById({_id:_id},function(err,user)

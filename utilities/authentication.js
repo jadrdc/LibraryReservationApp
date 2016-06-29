@@ -25,7 +25,7 @@ passport.use('local-login',
               },
               function(req,university_ident,password,done){
                 var userManager= new   UserController();
-                userManager.findUserByIdentification(university_ident,function(err,user){
+                userManager.findUserByUniversityId(university_ident,function(err,user){
                   if(err)
                   {
                       return next(err);
@@ -36,7 +36,7 @@ passport.use('local-login',
                   }
                   else if (!user.comparePassword(password))
                   {
-                    
+
                     done(null,false);
                   }
                   else
