@@ -24,6 +24,13 @@ var BookController = function ()
        });
    };
 
+this.findAllBooks=function(next)
+{
+BookSchema.find({},next);
+};
+
+
+
    this.findBookById=function(_id,next)
     {
          BookSchema.findById({_id:_id},function(err,book)
@@ -32,7 +39,7 @@ var BookController = function ()
         });
     };
 
-  this.removeBook=function()
+  this.removeBook=function(ISBN,next)
        {
              BookSchema.findOneAndRemove({ISBN:ISBN},function(err,book)
             {

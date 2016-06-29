@@ -43,6 +43,7 @@ app.use(bookrouting);
 
 
 
+app.use(express.static(__dirname+'/static'));
 
 // Global Connection to Databaseññ
 parameter.mongoose.connect(parameter.database,function(err)
@@ -63,4 +64,9 @@ app.listen(parameter.port,function(err)
 {
   if(err)throw err;
   	console.log("The Server is Running");
+});
+
+
+app.get('/',function(req,resp){
+  resp.render('./accounts/login',{error : ""} );
 });

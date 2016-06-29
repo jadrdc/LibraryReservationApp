@@ -1,1 +1,101 @@
+<% layout('./public/layout') %>
 
+<div class="bd-example">
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="exampleModalLabel">Actualizar Libro</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/updateBook">
+
+          <div class="form-group" >
+             <label> ISBN</label>
+             <input type="text"  name="isbn" class="form-control"  required="true" />
+          </div>
+
+          <div class="form-group" >
+             <label> Titulo</label>
+             <input type="text"  name="title" class="form-control"  required="true" />
+          </div>
+
+          <div class="form-group" >
+             <label> Autores</label>
+             <input type="text"  name="authors" class="form-control"  required="true" />
+          </div>
+
+          <div class="form-group" >
+             <label> Fecha Publicacion</label>
+             <input type="date"  name="published_date" class="form-control"  required="true" />
+          </div>
+
+
+          <div class="form-group" >
+             <label> Categoria</label>
+             <input type="text"  name="category" class="form-control"  required="true" />
+          </div>
+
+          <div class="form-group" >
+             <label> Cantidad Disponible</label>
+             <input type="number"  name="stock_amount" class="form-control"  required="true" />
+          </div>
+
+
+          <div class="form-group" >
+             <label> Cantidad De Dia de Prestamo</label>
+             <input type="number"  name="loan_time" class="form-control"  required="true" />
+          </div>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="update">Guardar </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <h2>Libros en Almacen</h2>
+  <table class="table table-hover  table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ISBN</th>
+        <th>Titulo</th>
+        <th>Autores</th>
+          <th>Fecha de Publicacion</th>
+          <th>Dia Permitidos para Prestar</th>
+          <th>Cantidad de Libros Disponible</th>
+          <th>Categoria</th>
+          <th>Modificar Libro</th>
+          <th>Eliminar Libro</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% books.forEach(function(value,index,arr){ %>
+    <tr>
+              <td><input id="flag" type="hidden" value="<%= arr[index].ISBN %>"></td>
+                <td><label  id="isbn<%= arr[index].ISBN%>"><%= arr[index].ISBN%></label></td>
+                <td> <label id="title<%= arr[index].ISBN%>"><%= arr[index].title%></label></td>
+                <td><label id="authors<%= arr[index].ISBN%>"><%= arr[index].authors%></label></td>
+                <td><label id="published_date<%= arr[index].ISBN%>"><%= arr[index].published_date%></label></td>
+                <td><label id="loan_time<%= arr[index].ISBN%>"><%= arr[index].loan_time%></label></td>
+                <td><label id="category<%= arr[index].ISBN%>"><%= arr[index].category%></label></td>
+                <td><label id="stock_amount<%= arr[index].ISBN%>"><%= arr[index].stock_amount%></label></td>
+              <td>  <button type="button" class="btn btn-success"  id="updateBook" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Modificar Libro</button></td>
+              <td><button  class="btn btn-danger"type="button" id="removebook"> Eliminar Libro </button></td>
+            </tr>
+
+          <%  }) %>
+    </tbody>
+  </table>
+</div>
