@@ -3,6 +3,7 @@
 <div class="bd-example">
 
 
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -64,10 +65,13 @@
 
 <div class="container">
   <h2>Libros en Almacen</h2>
+  <button  class="btn btn-danger"type="button" id="removebook"> Eliminar Libro </button>
+
+
   <table class="table table-hover  table-bordered">
     <thead>
       <tr>
-        <th></th>
+        <th><input type="checkbox"  id="allbook" value=""></th>
         <th>ISBN</th>
         <th>Titulo</th>
         <th>Autores</th>
@@ -76,24 +80,23 @@
           <th>Cantidad de Libros Disponible</th>
           <th>Categoria</th>
           <th>Modificar Libro</th>
-          <th>Eliminar Libro</th>
       </tr>
     </thead>
     <tbody>
 
       <% books.forEach(function(value,index,arr){ %>
-    <tr>
-              <td><input id="flag" type="hidden" value="<%= arr[index].ISBN %>"></td>
-                <td><label  id="isbn<%= arr[index].ISBN%>"><%= arr[index].ISBN%></label></td>
-                <td> <label id="title<%= arr[index].ISBN%>"><%= arr[index].title%></label></td>
-                <td><label id="authors<%= arr[index].ISBN%>"><%= arr[index].authors%></label></td>
-                <td><label id="published_date<%= arr[index].ISBN%>"><%= arr[index].published_date%></label></td>
-                <td><label id="loan_time<%= arr[index].ISBN%>"><%= arr[index].loan_time%></label></td>
-                <td><label id="category<%= arr[index].ISBN%>"><%= arr[index].category%></label></td>
-                <td><label id="stock_amount<%= arr[index].ISBN%>"><%= arr[index].stock_amount%></label></td>
-              <td>  <button type="button" class="btn btn-success"  id="updateBook" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Modificar Libro</button></td>
-              <td><button  class="btn btn-danger"type="button" id="removebook"> Eliminar Libro </button></td>
-            </tr>
+        <tr>
+            <td><div class="checkbox"><label><input type="checkbox"  id="toupdate" name="id" value="<%= arr[index].ISBN %>"></label></div></td>
+            <td><label><%= arr[index].ISBN%></label></td>
+            <td> <label><%= arr[index].title%></label></td>
+            <td><label><%= arr[index].authors%></label></td>
+            <td><label><%= arr[index].published_date%></label></td>
+            <td><label><%= arr[index].loan_time%></label></td>
+            <td><label><%= arr[index].stock_amount%></label></td>
+            <td><label id="category<%= arr[index].ISBN%>"><%= arr[index].category%></label></td>
+          <td><button type="button" class="btn btn-success"  id="updateBook" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Modificar Libro</button></td>
+        </tr>
+
 
           <%  }) %>
     </tbody>

@@ -58,10 +58,25 @@ router.post('/removebook',function (req,resp)
 
     var bookManager= new BookController();
     bookManager.removeBook(req.body._id,function(err,req){
-      res.redirect('back');
+      resp.redirect('back');
     });
 });
 
+
+
+
+
+router.post('/updateBook',function(req,res)
+{
+
+var bookManager= new BookController();
+  bookManager.updateBook(req.body.isbn,req.body.title,req.body.authors,
+                          req.body.published_date,req.body.category,req.body.stock_amount
+                          ,req.body.loan_time,function(err,book){
+
+    res.redirect('/detailbooks');
+  });
+  });
 
 
 

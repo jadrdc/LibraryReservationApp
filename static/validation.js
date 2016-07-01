@@ -12,35 +12,55 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 $(document).ready(function(){
 
 
-    $("#removebook").click(function()
-    {if(confirm('Desea eliminar este libro del almacen ?'))
-   {  var id=$('#flag').val();
-      $.post("/removebook",
-      {_id:id
-        },
-      function(data,status){
-          console.log("Data: " + data + "\nStatus: " + status);
-      });}});
-
-      $("#updateBook").click(function()
-      {       $("input[name=isbn]").val($("#isbn").text());
-               $("input[name=title]").val($("#title").text());
-               $("input[name=authors]").val($("#authors").text());
-               $("input[name=published_date]").val($("#published_date").text());
-               $("input[name=category]").val($("#category").text());
-               $("input[name=stock_amount]").val($("#stock_amount").text());
-               $("input[name=loan_time]").val($("#loan_time").text());
-      });
-      $("#update").click(function()
-      {
+    $("#removebook").click(function(){
+          if(confirm('Desea eliminar estos libros   del Inventario ?'))
+            {
+              $("input:checkbox[name=id]:checked").each(function ()
+                  {
+                    var id=$(this).val();
+                    $.post("/removebook",
+                    {_id:id
+                     },
+                    function(data,status){
+                       console.log("Data: " + data + "\nStatus: " + status);
+                    });
+                  });
+          } });
 
 
+        $("#allbook").click(function()
+              {
+                $("input:checkbox[name=id]").prop("checked",$('#allbook').is(':checked'));
+              });
+
+       $("#updateBook").click(function()
+     {
+       alert('XD');
+
+              $("input:text[name=isbn]").val  ($(this).closest('tr').children('td:eq(1)').text());
+              $("input:text[name=title]").val  ($(this).closest('tr').children('td:eq(2)').text());
+              $("input:text[name=authors]").val  ($(this).closest('tr').children('td:eq(3)').text());
+              $("input:text[name=category]").val  ($(this).closest('tr').children('td:eq(7)').text());
+              $("input[name=stock_amount]").val  ($(this).closest('tr').children('td:eq(6)').text());
+              $("input[name=loan_time]").val  ($(this).closest('tr').children('td:eq(5)').text());
+    });
 
 
-      });
 
+    $("#update").click(function()
+   {
 
+     $(function () {
+        $('#exampleModal').modal('toggle');
+     });
 
+      $.post("/updateBook", {  isbn  :   $("input:text[name=isbn]").val () , title :    $("input:text[name=title]").val(),
+                              authors : $("input:text[name=authors]").val() , category : $("input:text[name=category]").val(),
+                             stock_amount : $("input[name=stock_amount]").val() ,loan_time : $("input[name=loan_time]").val(),
+                             published_date :  $("input[name=published_date]").val() },
+                              function(data,status){console.log("Data: " + data + "\nStatus: " + status);});
+ }
+  );
 
 
 
@@ -48,3 +68,22 @@ $(document).ready(function(){
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+isbn  :   $("input:text[name=isbn]").val () , title :    $("input:text[name=title]").val(),
+                        authors : $("input:text[name=authors]").val() , category : $("input:text[name=category]").val(),
+                       stock_amount : $("input[name=stock_amount]").val() ,loan_time $("input[name=loan_time]") ,
+                       published_date :  $("input[name=published_date]").val()  */

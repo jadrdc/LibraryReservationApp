@@ -31,6 +31,18 @@ BookSchema.find({},next);
 
 
 
+
+
+this.updateBook=function(isbn,title,authors,published_date,category,stock_amount,loan_time,next)
+{
+
+
+  BookSchema.findOneAndUpdate({ISBN :isbn}, {isbn : isbn  ,title : title ,authors : authors ,published_date : published_date ,category : category ,stock_amount : stock_amount,loan_time : loan_time} ,{upsert:false},next);
+
+
+};
+
+
    this.findBookById=function(_id,next)
     {
          BookSchema.findById({_id:_id},function(err,book)
