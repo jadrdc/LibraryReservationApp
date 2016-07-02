@@ -15,16 +15,19 @@ $(document).ready(function(){
     $("#removebook").click(function(){
           if(confirm('Desea eliminar estos libros   del Inventario ?'))
             {
+
+
               $("input:checkbox[name=id]:checked").each(function ()
                   {
                     var id=$(this).val();
                     $.post("/removebook",
                     {_id:id
                      },
-                    function(data,status){
-                       console.log("Data: " + data + "\nStatus: " + status);
-                    });
-                  });
+                    function(data,status){});
+
+                    $(this).closest('tr').remove();
+
+                 });
           } });
 
 
@@ -33,10 +36,9 @@ $(document).ready(function(){
                 $("input:checkbox[name=id]").prop("checked",$('#allbook').is(':checked'));
               });
 
-       $("#updateBook").click(function()
+       $("button:button[name=updateBook]").click(function()
      {
-       alert('XD');
-
+ 
               $("input:text[name=isbn]").val  ($(this).closest('tr').children('td:eq(1)').text());
               $("input:text[name=title]").val  ($(this).closest('tr').children('td:eq(2)').text());
               $("input:text[name=authors]").val  ($(this).closest('tr').children('td:eq(3)').text());

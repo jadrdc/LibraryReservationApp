@@ -1,4 +1,4 @@
-<% layout('./public/layout') %>
+-<% layout('./public/layout') %>
 
 <div class="bd-example">
 
@@ -66,8 +66,7 @@
 <div class="container">
   <h2>Libros en Almacen</h2>
   <button  class="btn btn-danger"type="button" id="removebook"> Eliminar Libro </button>
-
-
+  <p><a class="btn btn-default" href="/return" role="button">Regresar Pagina Anterior &raquo;</a></p>
   <table class="table table-hover  table-bordered">
     <thead>
       <tr>
@@ -94,7 +93,7 @@
             <td><label><%= arr[index].loan_time%></label></td>
             <td><label><%= arr[index].stock_amount%></label></td>
             <td><label id="category<%= arr[index].ISBN%>"><%= arr[index].category%></label></td>
-          <td><button type="button" class="btn btn-success"  id="updateBook" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Modificar Libro</button></td>
+          <td><button type="button" class="btn btn-success"  id="updateBook" data-toggle="modal" name="updateBook" data-target="#exampleModal" data-whatever="@getbootstrap">Modificar Libro</button></td>
         </tr>
 
 

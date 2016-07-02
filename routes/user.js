@@ -33,9 +33,19 @@
 
   router.get('/login',function(req,res,next)
 {
+  console.log ('Get Login');
    res.render('./accounts/login',{error :req.flash('error')});
 
 });
+
+router.get('/logout',function(req,res,next)
+{
+    req.logout();
+ res.render('./accounts/login',{error :req.flash('error')});
+
+});
+
+
 
 router.post("/login",passport.authenticate('local-login',{
   successRedirect: "/profile",
@@ -44,7 +54,17 @@ router.post("/login",passport.authenticate('local-login',{
 }));
 
 
+router.get('/profile',function(req,res)
+{
+  console.log ('Get profile');
 
+  res.render('./accounts/profile');
+
+});
+
+router.get('/return',function(req,res){
+  res.redirect('/profile');
+});
 
 
 
