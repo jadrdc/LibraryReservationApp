@@ -33,7 +33,6 @@
 
   router.get('/login',function(req,res,next)
 {
-  console.log ('Get Login');
    res.render('./accounts/login',{error :req.flash('error')});
 
 });
@@ -56,8 +55,6 @@ router.post("/login",passport.authenticate('local-login',{
 
 router.get('/profile',function(req,res)
 {
-  console.log ('Get profile');
-
   res.render('./accounts/profile');
 
 });
