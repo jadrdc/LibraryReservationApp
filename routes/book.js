@@ -80,4 +80,31 @@ var bookManager= new BookController();
 
 
 
+
+router.get('/buybooks',function(req,res){
+res.render('./accounts/buybooks');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports=router;

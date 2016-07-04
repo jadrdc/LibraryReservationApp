@@ -14,6 +14,7 @@ var BookController = function ()
      book.loan_time=loan_time;
      book.stock_amount=stock_amount;
      book.category=category;
+     book.left_books=stock_amount;
      book.save(done);
   };
   this.findBookByISBN=function(identification,next)
@@ -29,7 +30,11 @@ this.findAllBooks=function(next)
 BookSchema.find({},next);
 };
 
+this.findAllBooksAvailable=function(next)
+{
 
+   BookSchema.find({left_books:1},next);
+}
 
 
 

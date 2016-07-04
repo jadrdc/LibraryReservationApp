@@ -10,7 +10,8 @@ var BookSchema = new Schema({
    published_date :Date,
    loan_time : Number,
    stock_amount : Number,
-   category :String
+   category :{ type : Schema.Types.ObjectId , ref : 'Category'}},
+   left_books:Number
 });
 
  module.exports=mongose.model('Book',BookSchema);
