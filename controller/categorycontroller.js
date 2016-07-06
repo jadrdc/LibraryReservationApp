@@ -15,17 +15,6 @@ var CategoyController = function ()
 {
 CategorySchema.find({},next);
 };
-
-this.updateBook=function(id,name,next)
-{
-
-
-  CategorySchema.findOneAndUpdate({_id :id}, {name:name} ,{upsert:false},next);
-
-
-};
-
-
    this.findCategoryById=function(_id,next)
     {
          CategorySchema.findById({_id:_id},function(err,category)

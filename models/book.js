@@ -10,7 +10,7 @@ var BookSchema = new Schema({
    published_date :Date,
    loan_time : Number,
    stock_amount : Number,
-   category :{ type : Schema.Types.ObjectId , ref : 'Category'}},
+   category :{ type : Schema.Types.ObjectId , ref : 'Category'},
    left_books:Number
 });
 

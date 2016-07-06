@@ -1,5 +1,5 @@
-var moongose=require('mongose');
-var Schema=mongose.Schema;
+var moongose=require('mongoose');
+var Schema=moongose.Schema;
 
 
 var CategorySchema=new Schema(
@@ -8,4 +8,4 @@ var CategorySchema=new Schema(
   }
 );
 
-module.exports=mongose.model('Category',CategorySchema);
+module.exports=moongose.model('Category',CategorySchema);

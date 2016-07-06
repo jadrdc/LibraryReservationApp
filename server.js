@@ -10,6 +10,8 @@ var flash=require('express-flash');
 // User routing
 var userrouting=require('./routes/user');
 var bookrouting=require('./routes/book');
+var categoryrouting=require('./routes/category');
+
 
 /*Global Configuration Values*/
 var parameter=require('./global/parameters')
@@ -40,6 +42,7 @@ app.use(passport.session());
 
 app.use(userrouting);
 app.use(bookrouting);
+app.use(categoryrouting);
 
 
 

@@ -38,11 +38,11 @@ $(document).ready(function(){
 
        $("button:button[name=updateBook]").click(function()
      {
- 
+
               $("input:text[name=isbn]").val  ($(this).closest('tr').children('td:eq(1)').text());
               $("input:text[name=title]").val  ($(this).closest('tr').children('td:eq(2)').text());
               $("input:text[name=authors]").val  ($(this).closest('tr').children('td:eq(3)').text());
-              $("input:text[name=category]").val  ($(this).closest('tr').children('td:eq(7)').text());
+              $("select[name=category]").val  ($(this).closest('tr').children('td:eq(7)').text());
               $("input[name=stock_amount]").val  ($(this).closest('tr').children('td:eq(6)').text());
               $("input[name=loan_time]").val  ($(this).closest('tr').children('td:eq(5)').text());
     });
