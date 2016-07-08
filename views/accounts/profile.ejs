@@ -1,13 +1,32 @@
 <% layout('./public/layout') %>
+<style>
+    .login-form {
+        width: 75rem;
+        height: 25.75rem;
+        position: 35px;
+        top: 30%;
+        margin-top: -1.375rem;
+        left: 35%;
+        margin-left: -12.5rem;
+        background-color: #ffffff;
+        opacity: 0;
+        -webkit-transform: scale(.8);
+        transform: scale(.8);
+    }
+</style>
 
-<div class="container">
+<div class="container  login-form o padding 2000px block-shadow block-shadow">
   <!-- Example row of columns -->
   <div class="row">
     <div class="col-md-3">
+    <div class="thumbnail">
       <h2>Agrega Libros a la Coleccion</h2>
+      <div class="caption">
       <img  src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Book_font_awesome.svg"/>
       <p><a class="btn btn-default" href="/addBook" role="button">Agrega Libros a La Coleccion &raquo;</a></p>
-    </div>
+    </div></div></div>
+
+
     <div class="col-md-3">
       <h2>Modifica Libros de La Coleccion</h2>
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Edit_font_awesome.svg" />

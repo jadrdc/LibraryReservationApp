@@ -1,16 +1,19 @@
 <% layout('./public/layout') %>
 <div class="row">
 
-<div class="col-lg-6 col-md-offset-3">
+<div class="col-lg-6 col-md-offset-3  login-form o padding 2000px block-shadow block-shadow">
 
 <form method="post">
+  <h1 class="text-light">Digite los Datos de la Categoria a Agregar</h1>
+  <hr class="thin"/>
+  <br />
 <div class="form-group" >
    <label> Nombre Categoria </label>
    <input type="text"  name="name" class="form-control"  required="true" />
 </div>
 
 <button type="submit" class="btn btn-success">Registrar</button>
-<p><a class="btn btn-default" href="/return" role="button">Regresar Pagina Anterior &raquo;</a></p>
+<a class="btn btn-default" href="/return" role="button">Regresar Pagina Anterior &raquo;</a>
 </form>
 
 </div>

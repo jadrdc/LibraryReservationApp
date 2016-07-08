@@ -55,16 +55,20 @@ router.post("/login",passport.authenticate('local-login',{
 
 router.get('/profile',function(req,res)
 {
+  if(req.isAuthenticated() ){
+
   res.render('./accounts/profile');
+
+}
+else {
+  res.redirect('/login');
+}
 
 });
 
 router.get('/return',function(req,res){
   res.redirect('/profile');
 });
-
-
-
 
 
 

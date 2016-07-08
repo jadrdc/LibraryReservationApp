@@ -1,7 +1,7 @@
 <% layout('./public/layout') %>
 <div class="row">
 
-<div class="col-lg-6 col-md-offset-3">
+<div class="col-lg-6 col-md-offset-3  login-form o padding 2000px block-shadow block-shadow">
   <%  if(error.length >0) {%>
   <div class="alert alert-dismissible alert-danger">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -10,7 +10,27 @@
     <%= error %>
   </div>
   <% } %>
+
+     <style>
+         .login-form {
+             width: 35rem;
+             height: 42.75rem;
+             position: 25px;
+             top: 30%;
+             margin-top: -1.375rem;
+             left: 50%;
+             margin-left: -12.5rem;
+             background-color: #ffffff;
+             opacity: 0;
+             -webkit-transform: scale(.8);
+             transform: scale(.8);
+         }
+     </style>
+
 <form method="post">
+  <h1 class="text-light">Complete sus datos para la creacion de un Libro</h1>
+  <hr class="thin"/>
+  <br />
 <div class="form-group" >
    <label> ISBN</label>
    <input type="text"  name="isbn" class="form-control"  required="true" />
@@ -60,8 +80,7 @@
 </div>
 
 
-<button type="submit" class="btn btn-success">Registrar</button>
-<p><a class="btn btn-default" href="/return" role="button">Regresar Pagina Anterior &raquo;</a></p>
+<button type="submit" class="btn btn-success">Registrar</button><a class="btn btn-default" href="/return" role="button">Regresar Pagina Anterior &raquo;</a>
 </form>
 
 </div>

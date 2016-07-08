@@ -1,7 +1,7 @@
 <% layout('./public/layout') %>
 <div class="row">
 
-<div class="col-lg-6 col-md-offset-3">
+<div class="col-lg-6 col-md-offset-3 login-form o padding 2000px block-shadow block-shadow">
 <%  if(error.length >0) {%>
 <div class="alert alert-dismissible alert-danger">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -13,50 +13,74 @@
 
 
 
+   <style>
+       .login-form {
+           width: 35rem;
+           height: 38.75rem;
+           position: 25px;
+           top: 30%;
+           margin-top: -1.375rem;
+           left: 50%;
+           margin-left: -12.5rem;
+           background-color: #ffffff;
+           opacity: 0;
+           -webkit-transform: scale(.8);
+           transform: scale(.8);
+       }
+   </style>
+
+
 <form method="post">
-<div class="form-group" >
+
+  <h1 class="text-light">Complete sus datos para la creacion de un Perfil</h1>
+  <hr class="thin"/>
+  <br />
+  <div class="form-group input-control password full-size"  >
    <label> Nombre</label>
    <input type="text"  name="name" class="form-control"  required="true" />
+ </br></br></br></br>
 </div>
 
-<div class="form-group" >
+<div class="form-group input-control password full-size"  >
    <label> Apellido</label>
    <input type="text"  name="lastname" class="form-control"  required="true" />
 </div>
 
-<div class="form-group" >
+<div class="form-group input-control password full-size"  >
    <label> Cedula</label>
    <input type="text"  name="identification" class="form-control"  required="true" />
 </div>
 
-<div class="form-group" >
+<div class="form-group input-control password full-size"  >
    <label> Facultad</label>
    <input type="text"  name="faculty" class="form-control"  required="true" />
 </div>
 
-<div class="form-group" >
+<div class="form-group input-control password full-size"  >
    <label> Matricula/Codigo de Maestro</label>
    <input type="text"  name="university_ident" class="form-control"  required="true" />
 </div>
 
-<div class="form-group" >
+
+<div class="form-group input-control password full-size"  >
 <label> Email Institucional</label>
 <input type="email"  name="email" class="form-control" required="true" />
 </div>
 
 
-<div class="form-group" >
+<div class="form-group input-control password full-size"  >
   <label>Contraseña</label>
   <input type="password"  name="password" class="form-control"   required="true"/>
 </div>
 
-<div class="form-group" >
+
+<div class="form-group  password full-size"  >
   <label>Administrador</label>
-  <input type="radio" name="adminuser"  class="form-control"   value="1"> Si<br>
-   <input type="radio" name="adminuser" class="form-control"    value="0" checked> No<br>
+  <input type="radio" name="adminuser"  class=""   value="1"> Si
+   <input type="radio" name="adminuser" class=""    value="0" checked> No<br>
 </div>
 
-<button type="submit" class="btn btn-success">Registrar</button>
+<button type="submit" class="btn btn-success">Registrar</button><a class="btn btn-default" href="/return" role="button">Regresar Pagina Anterior &raquo;</a>
 
 </form>
 
