@@ -73,9 +73,6 @@ router.post('/removebook',function (req,resp)
 });
 
 
-
-
-
 router.post('/updateBook',function(req,res)
 {
 
@@ -96,14 +93,32 @@ router.get('/buybooks',function(req,res)
   var bookManager= new BookController();
        bookManager.findAllBooks(function(err,books)
      {
+       var categoryManager= new CategoyController();
+            categoryManager.findAllCategory(function(err,categories)
+          {
 
 
-  res.render('./accounts/buybooks',{books:books});
+              res.render('./accounts/buybooks',{books:books , categories: categories});
+            });
+
 
      })
 });
 
 
+router.get('/buybooks/:category',function(req,res)
+{
+    var bookManager= new BookController();
+        bookManager.findByCategory(req.params.category,function(err,books)
+        {
+          var categoryManager = new CategoyController();
+        categoryManager.findAllCategory(function(err,categories)
+      { 
+         res.render('./accounts/buybooks',{books:books , categories: categories});
+      });
+    });
+  }
+);
 
 
 

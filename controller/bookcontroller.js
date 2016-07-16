@@ -17,6 +17,26 @@ var BookController = function ()
      book.left_books=stock_amount;
      book.save(done);
   };
+
+
+
+
+
+
+
+
+  this.findByCategory=function(category,next)
+   {
+        BookSchema.find({category:category},function(err,book)
+       {
+        next(err,book);
+       });
+   };
+
+
+
+
+
   this.findBookByISBN=function(identification,next)
    {
         BookSchema.findOne({ISBN:ISBN},function(err,book)

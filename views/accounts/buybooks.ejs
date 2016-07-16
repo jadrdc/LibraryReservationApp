@@ -14,8 +14,23 @@
         transform: scale(.8);
     }
 </style>
+
+
 <div class="container  login-form o padding 2000px block-shadow block-shadow">
-<div class="row">
+
+
+          <div class="col-md-3">
+              <a href="/buybooks/" class="list-group-item "> Categorias</a>
+        <div class="list-group">
+          <% for(var y=0 ; y<categories.length;y++) {%>
+            <a href="/buybooks/<%= categories[y]._id %>" class="list-group-item ">
+    <%= categories[y].name %>
+            </a>
+    <%}%>
+    </div>
+  </div>
+
+
 <% for(var x =0;x<books.length;x++) {%>
 
 <div class="col-md-3">
